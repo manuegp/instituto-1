@@ -6,6 +6,8 @@ use App\Http\Controllers\Controller;
 use App\Models\Materia;
 use Illuminate\Http\Request;
 use App\Http\Resources\MateriaResource;
+use App\Http\Resources\NotaResource;
+use Illuminate\Support\Facades\Auth;
 
 class MateriaController extends Controller
 {
@@ -16,7 +18,7 @@ class MateriaController extends Controller
      */
     public function index()
     {
-        return MateriaResource::collection(Materia::paginate());
+         return MateriaResource::collection(Materia::paginate());
     }
 
     /**

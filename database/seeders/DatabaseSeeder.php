@@ -6,6 +6,7 @@ use Illuminate\Database\Seeder;
 use App\Models\User;
 use App\Models\Grupo;
 use App\Models\Matricula;
+use App\Models\Nota;
 
 class DatabaseSeeder extends Seeder
 {
@@ -16,9 +17,9 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-    	User::truncate();
-    	Grupo::truncate();
-    	Matricula::truncate();
+    	User::query()->delete();
+    	Grupo::query()->delete();
+    	Matricula::query()->delete();
         User::factory(10)->create();
         Grupo::factory(20)->create();
         Matricula::factory(15)->create();
@@ -26,6 +27,8 @@ class DatabaseSeeder extends Seeder
         $user = User::factory()
             ->has(Grupo::factory()->count(3))
             ->create();
+
+        $this->call([NotasTableSeeder::class]);
     }
 
 }

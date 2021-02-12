@@ -61,4 +61,14 @@ class User extends Authenticatable
     {
         return $this->belongsToMany(Grupo::class, 'matriculas', 'alumno', 'grupo');
     }
+
+    
+    public function notas(){
+        return $this->hasMany(Nota::class, 'user_id');
+    }
+
+    public function esProfesor(){
+        return $this->avatar == "profesor";
+    }
+    
 }
